@@ -441,4 +441,22 @@
     }
 }
 
+-(void)findAllCalendars:(CDVInvokedUrlCommand*)command {
+    NSString *callbackId = command.callbackId;
+    NSArray* calendars = [eventStore calendarsForEntityType:EKEntityTypeEvent];
+    NSMutableArray *finalResults = [[NSMutableArray alloc] initWithCapacity:calendars.count];
+
+    for (EKCalendar* calendar in calendars) {
+        NSMutableDictionary *entry = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                      calendar.title, @"title",
+                                      calendar.calendarIdentifier, @"id",
+                                      calendar.subscribed, @"subscribed",
+                                      nil];
+        [finalResults addObject:entry];
+    }
+
+    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsArray:finalResults];
+    [self writeJavascript:[result toSuccessCallbackString:callbackId]];
+}
+
 @end

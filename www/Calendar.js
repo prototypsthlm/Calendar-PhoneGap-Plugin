@@ -113,6 +113,10 @@ Calendar.prototype.modifyEventInNamedCalendar = function (title, location, notes
   }])
 };
 
+Calendar.prototype.findAllCalendars = function (successCallback, errorCallback) {
+  cordova.exec(successCallback, errorCallback, "Calendar", "findAllCalendars", [{}]);
+};
+
 Calendar.install = function () {
   if (!window.plugins) {
     window.plugins = {};

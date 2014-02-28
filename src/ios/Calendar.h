@@ -32,4 +32,6 @@
 - (void)deleteEvent:(CDVInvokedUrlCommand*)command;
 - (void)deleteEventFromNamedCalendar:(CDVInvokedUrlCommand*)command;
 
+- (void)findAllCalendars:(CDVInvokedUrlCommand*)command;
+
 @end
