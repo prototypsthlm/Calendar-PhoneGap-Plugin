@@ -343,7 +343,7 @@
             NSMutableDictionary *entry = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                                           event.title, @"title",
                                           event.location, @"location",
-                                          event.notes, @"message",
+                                          event.notes ? event.notes : @"", @"message",
                                           [df stringFromDate:event.startDate], @"startDate",
                                           [df stringFromDate:event.endDate], @"endDate", nil];
             [finalResults addObject:entry];
